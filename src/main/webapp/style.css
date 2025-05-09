@@ -1,0 +1,301 @@
+body {
+    background-color: rgb(29, 29, 29);
+}
+
+h2 {
+    color: #38b2ac;
+    font-family: verdana, arial;
+}
+
+h6 {
+    color: rgb(195, 96, 199);
+    font-family: verdana, arial;
+}
+
+h4 {
+    color: rgb(195, 96, 199);
+    font-family: verdana, arial;
+}
+
+label {
+    color: rgb(47, 209, 147);
+    font-family: verdana, arial;
+}
+
+.buttonback {
+    background-color: grey;
+    color: black;
+    font-size: 16px
+}
+
+.buttonsubmit {
+    background-color: rgb(46, 46, 46);
+    color: darkorange;
+    font-size: 16px;
+}
+
+.buttonselectall {
+    background-color: rgb(46, 46, 46);
+    color: rgb(47, 209, 147);
+    font-size: 16px;
+}
+
+.buttoncreate {
+    background-color: rgb(46, 46, 46);
+    color: rgb(47, 209, 147);
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+form{
+    padding: 15px;
+}
+
+.p1 {
+	color: tomato;
+	font-family: verdana, arial;
+}
+
+.p2 {
+	color:  rgb(93, 143, 245);
+	font-family: verdana, arial;
+}
+
+/* table 1 is for showAll or view by ID */
+.table1 {
+    color:#009879;
+	width: auto;
+	table-layout: auto;
+    border: 2px solid #727171; 
+    padding: 4px;
+    border-collapse: collapse;
+}
+
+/* table 2 is for rendering */
+.table2 {					 
+    color:#009879;
+	width: 500px;
+	table-layout: auto;
+    border: 0px;
+    padding: 4px;
+    border-collapse: collapse;
+}
+
+.table2 td:first-child {
+    text-align: right;
+    padding-right: 10px;
+    white-space: nowrap;
+}
+
+.table2 input[type="text"],
+.table2 input[type="password"],
+.table2 input[type="date"],
+.table2 select {
+    width: 250px;
+}
+
+.table1 th, .table1 td {
+    /*border: 1px solid #333;*/
+    border: 1px solid #727171; 
+    padding: 8px; 
+}
+
+td.fitwidth {
+    width: fit-content;
+    white-space: nowrap;
+}
+
+th {
+    width: fit-content;
+    color: #38b2ac;
+    font-family: verdana, arial;
+}
+
+tr td {
+    color:#009879;
+	width: fit-content;
+    color: lightgreen;
+    font-family: verdana, arial;
+}
+
+.id {
+    text-align: center;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(195, 96, 199);
+	width: fit-content;
+    font-family: verdana, arial;
+    
+}
+
+a:hover {
+	font-weight: bold;
+}
+
+.labelCell {
+	float: left;
+	table-layout: auto;
+    border: none !important;
+    padding: 4px;
+    border-collapse: collapse;
+    white-space: nowrap;
+    color:darkorange;
+    font-family: verdana, arial;
+	width: fit-content;
+}
+
+/* Filter styles matching your dark theme */
+.filter-container {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: rgb(56, 56, 56);
+    border-radius: 5px;
+    border: 1px solid #727171;
+    display: inline-block; /* Change from block to inline-block */
+    width: auto; /* Explicitly set width to auto */
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+}
+
+.filter-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.filter-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.closed-row {
+    background-color: #464646;
+}
+
+.view-only {
+    color: #888;
+    text-decoration: none;
+    cursor: default;
+}
+
+.filter-container select {
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #727171;
+    background-color: rgb(46, 46, 46);
+    color: lightgreen;
+    font-family: verdana, arial;
+}
+
+.add-button-container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns children to the left */
+}
+
+.buttonfilter {
+    background-color: rgb(46, 46, 46);
+    color: rgb(187, 187, 55);
+    font-size: 16px;
+    border: 1px solid #727171;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.buttonfilter:hover {
+    background-color: rgb(60, 60, 60);
+    color: yellow;
+}
+
+.buttonadd {
+    background-color: rgb(46, 46, 46);
+    color: rgb(116, 134, 236);
+    font-size: 16px;
+    border: 1px solid #727171;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.buttonsave {
+    background-color: rgb(46, 46, 46);
+    color: lightgreen;
+    font-size: 16px;
+    border: 1px solid #727171;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.buttonclear {
+    background-color: rgb(46, 46, 46);
+    color: #f44336;
+    padding: 8px 12px;
+    border: 1px solid #727171;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Minimal Back Button Style */
+.button-back-minimal {
+    background-color: transparent;
+    color: #38b2ac;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid #38b2ac;
+    padding: 6px 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.button-back-minimal:before {
+    content: "\2190"; 
+    margin-right: 8px;
+    font-size: 16px;
+    transition: transform 0.2s ease;
+}
+
+.button-back-minimal:hover {
+    color: #4fd1ca;
+    border-bottom-color: #4fd1ca;
+}
+
+.button-back-minimal:hover:before {
+    transform: translateX(-3px);
+}
+
+/* Container for positioning */
+.back-button-container {
+    padding: 10px 0;
+    display: flex;
+}
+
+.back-button-container.top {
+    margin-bottom: 10px;
+}
+
+.back-button-container.bottom {
+    margin-top: 20px;
+}

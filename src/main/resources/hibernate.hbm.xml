@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.at.entity">
+
+	<class name="ActivityType" table="activity_type" mutable="true" dynamic-update="true">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native"/>
+		</id>
+		<property name="name" type="string" column="name" index="idx_activity_type_name"/>
+	</class>
+	 
+    <class name="Entry" table="entry">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native"/>
+		</id>
+		<property name="name" column="name" type="string" />
+        <property name="referenceNumber" column="reference_number" type="string" index="idx_entry_ref_num"/>
+        <property name="notes" column="notes" type="string" />
+        <property name="group" column="is_group" type="boolean" />
+        <property name="personal" column="is_personal" type="boolean" />
+        <property name="alert" column="alert" type="string" />
+        <property name="createdOn" column="created_on" type="calendar" />
+        <many-to-one name="parent" class="Entry" column="parent_id" not-null="false" fetch="select" />
+        <many-to-one name="author" class="Resource" column="author_id" not-null="false" fetch="select" />
+    </class>
+
+	<class name="ResourceType" table="resource_type" mutable="true" dynamic-update="true">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native"/>
+		</id>
+		<property name="name" type="string" column="name" index="idx_resource_type_name"/>
+	</class>
+
+    <class name="Resource" table="resource">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native"/>
+		</id>
+        <property name="firstName" column="first_name" type="string" />
+        <property name="surname" column="surname" type="string" />
+        <property name="displayName" column="display_name" type="string" />
+        <property name="username" column="username" type="string" unique="true" not-null="true" index="idx_resource_username"/>
+        <property name="password" column="password" type="string" not-null="true" />
+        <property name="passwordChangeForce" column="password_change_force" type="boolean" />
+        <property name="roleSystemAdmin" column="role_system_admin" type="boolean" />
+        <property name="roleHr" column="role_hr" type="boolean" />
+        <property name="active" column="active" type="boolean" index="idx_resource_active"/>
+        <property name="internal" column="internal" type="boolean" />
+        <property name="lastLogon" column="last_logon" type="calendar" />
+        <many-to-one name="resourceType" class="ResourceType" column="resource_type_id" not-null="false" fetch="select" />
+    </class>
+    
+    <class name="Activity" table="activity">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native"/>
+		</id>
+        <property name="title" column="title" type="string" />
+        <property name="description" column="description" type="string" />
+        <property name="startedOn" column="started_on" type="calendar" index="idx_activity_started"/>
+        <property name="completedOn" column="completed_on" type="calendar" unique="true" index="idx_activity_completed"/>
+        <property name="billable" column="billable" type="boolean" />
+        <property name="timeTaken" column="time_taken" type="big_decimal" />
+        <property name="closed" column="closed" type="boolean" index="idx_activity_closed"/>
+        <many-to-one name="activityType" class="ActivityType" column="activity_type_id" not-null="false" fetch="select" />
+        <many-to-one name="resource" class="Resource" column="author_id" not-null="false" fetch="select" />
+        <many-to-one name="task" class="Task" column="task_id" not-null="false" fetch="select" />
+        <many-to-one name="entry" class="Entry" column="entry_id" not-null="false" fetch="select" />
+    </class>
+    
+    <class name="EntryAuditTrail" table="entry_audit_trail">
+		<id name="id" column="id" type="long">
+			<generator class="native"/>
+		</id>
+        <property name="description" column="description" type="string" />
+        <property name="authorId" column="author_id" type="integer" />
+        <property name="changedOn" column="changed_on" type="calendar" index="idx_entry_audit_changed"/>
+        <many-to-one name="entry" class="Entry" column="entry_id" not-null="false" fetch="select" />
+    </class>
+    
+    <class name="Task" table="task">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native"/>
+		</id>
+        <property name="title" column="title" type="string" />
+        <property name="description" column="description" type="string" />
+        <property name="taskStatus" type="com.at.entity.TaskStatusUserType" column="task_status_id" not-null="true" />
+        <property name="createdOn" column="created_on" type="calendar" />
+        <property name="nextAction" column="next_action" type="calendar" />
+        <property name="dueOn" column="due_on" type="calendar" index="idx_task_due_date"/>
+        <property name="completedOn" column="completed_on" type="calendar" index="idx_task_completed"/>
+        <many-to-one name="entry" class="Entry" column="entry_id" not-null="false" fetch="select" cascade="all" />
+        <many-to-one name="owner" class="Resource" column="owner_id" not-null="false" fetch="select" />
+        <many-to-one name="assignedTo" class="Resource" column="assigned_to_id" not-null="false" fetch="select" />
+    </class>
+    
+</hibernate-mapping>
